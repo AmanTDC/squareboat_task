@@ -1,1 +1,1 @@
-const app = require('../routes/main')
+const app = require('../app/routes/main')

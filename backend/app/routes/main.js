@@ -5,19 +5,37 @@ const path = require('path')
 const bcrypt = require('bcrypt')
 const { User } = require('../models/User')
 const parser = require('body-parser')
-const { registerUser } = require('../services/authentication')
+const { registerUser, checkAuthenticated } = require('../services/authentication')
 const urlencodedParser = parser.urlencoded({extended : false});
 const usersRouter = require('./users')
 const postRouter = require('./posts')
 const followersRouter = require('./followers')
+const { nextTick } = require('process')
 app.post('/register', registerUser)
 app.post('/login', passport.authenticate('local',{failureMessage:"Invalid Credentials"}), (req,res)=>{
     res.json("Successfull Auth")
 })
+app.get('/getMyInfo',checkAuthenticated,(req,res)=>{
+    res.json({user:req.user});
+})
 
 app.delete('/logout',(req,res)=>{
-    req.logOut();
-    res.json("Succesfully Logged Out")
+    // req.logOut(function(err){
+    //     req.ses
+    //     if(err) console.log(err)
+    //     console.log(req.user)
+    // });
+    // req.logout({keepSessionInfo:false},function(err){
+    //     if(err)
+    //         console.log(err)
+    //     res.redirect("/")
+    //     // res.json("logging out")
+    // })
+    req.session.destroy((err)=>{
+        res.redirect('/')
+    })
+    
+    // res.json("Succesfully Logged Out")
 })
 
 app.use('/user',usersRouter);

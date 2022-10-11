@@ -2,11 +2,12 @@ import React, { useLayoutEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { loginUser } from '../user/authentication/authentication';
 import { Redirect } from 'react-router';
-export default function LoginComponent(props){
+import { connect } from 'react-redux';
+function LoginComponent(props){
     let [username,setUsername] = useState('')
     let [password,setPassword] = useState('')
     let [loggedIn,setLoggedIn] = useState(false)
-
+    
     let propertyToSetter = {
         username:setUsername,
         password:setPassword
@@ -24,6 +25,11 @@ export default function LoginComponent(props){
         }
         else{
             alert("Successfully Logged In!")
+            console.log(loginResponse)
+            // props.dispatch({
+            //     type:"SET_USER",
+            //     user_id:user.user_id
+            // })
             setLoggedIn(true)
         }
     }
@@ -66,3 +72,5 @@ export default function LoginComponent(props){
         </div>
     )
 }
+
+export default connect()(LoginComponent)

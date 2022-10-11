@@ -6,6 +6,7 @@ import { handleRegistrationError } from '../../errorHandlers/registrationErrorHa
 // handleLoginError
 const loginURL = API_BASE_URL+LOGIN
 const registerationURL = API_BASE_URL+REGISTER
+const logOutURL = API_BASE_URL+"/logout"
 
 async function loginUser(username,password){
     try{
@@ -35,7 +36,22 @@ async function registerUser(user){
     }
 }
 
+async function logOutUser(){
+    try{
+        await axios.delete(logOutURL)
+        return {
+            redirect : "/"
+        }
+    }catch(err){
+        return{
+            error:true,
+            errorMessage:"Failed Log Out"
+        }
+    }
+}
+
 export {
     loginUser,
-    registerUser
+    registerUser,
+    logOutUser
 }

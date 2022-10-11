@@ -32,7 +32,9 @@ app.use(cors(corsOptions))
 
 app.use(session({secret:"e4gtfawukedjfbv23652kjh34g23g4h",
     resave:false,
-    saveUninitialized:false})
+    saveUninitialized:false
+    // expires: new Date(Date.now() + (30 * 86400 * 1000))
+})
 )
 
 

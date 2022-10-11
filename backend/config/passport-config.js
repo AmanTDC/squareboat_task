@@ -21,25 +21,34 @@ async function authenticateUser(username, password, done){
     }
 
 
-    console.log("Verify Function CAlled")
-    return done(null,{username,user_id:user.id})
+    // console.log("Verify Function CAlled")
+    let tempUser = Object.assign({},user)
+    delete tempUser.password_hashed
+
+    return done(null,{user:tempUser})
 
 }
 
-function checkAuthenticated(req,res,next){
+async function checkAuthenticated(req,res,next){
     if(req.isAuthenticated()){
         return next()
     }
+    res.status(401)
     res.json({message:"Please Login!"})
 }
 console.log("In passpoort-confg")
-passport.use(new LocalStrategy( authenticateUser ))
-passport.serializeUser((user,done)=>{console.log("serialize");done(null,user)})
-passport.deserializeUser((user,done)=>{
-    console.log("deserialize")
-    done(null,user)
+async function configSerializeAndDeserialize (){
+    passport.use(new LocalStrategy( authenticateUser ))
+    passport.serializeUser((user,done)=>{console.log("serialize");done(null,user)})
+    passport.deserializeUser((user,done)=>{
+    // console.log("deserialize")
+    done(null, user)
     // done(null, await (new UserRepository().getUser({user_id:id})))
 })
+}
+
+configSerializeAndDeserialize()
+
 
 
 

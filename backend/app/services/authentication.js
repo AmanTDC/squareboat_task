@@ -1,7 +1,10 @@
 const { UserRepository } = require('../repositories/UserRepository')
 function checkAuthenticated(req,res,next){
+    console.log(req.user)
+    console.log(req.cookies)
     if(req.isAuthenticated()){
         next()
+        return
     }
     res.status(401)
     res.json({

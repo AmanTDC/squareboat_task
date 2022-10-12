@@ -12,7 +12,7 @@ function checkAuthenticated(req,res,next){
         errorCode:401,
         errorMessage:"User need to login",
         //to Change
-        redirect:"http://localhost:3000/login"
+        // redirect:"http://localhost:3000/login"
     })
 }
 

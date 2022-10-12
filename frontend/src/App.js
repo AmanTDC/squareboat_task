@@ -3,7 +3,7 @@ import React from 'react';
 import './App.css';
 import LoginComponent from './components/LoginComponent';
 import RegistrationComponent from './components/RegistrationComponent';
-import { BrowserRouter as Router, Link, Route,Redirect } from "react-router-dom";
+import { HashRouter as Router, Link, Route,Redirect } from "react-router-dom";
 import HomeComponent from './components/HomeComponent';
 
 function App() {

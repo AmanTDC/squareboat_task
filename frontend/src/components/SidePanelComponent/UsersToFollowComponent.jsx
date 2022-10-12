@@ -4,21 +4,16 @@ import { getNotFollowing } from "../../services/apiService";
 import UserInfoListComponent from "./UserInfoList";
 
 function UsersToFollowComponent(props){
-    let [users,setUsers] = useState([
-    ])
+    
     useEffect(()=>{
-        getNotFollowing(props.user).then(users_=>{
-            setUsers(users_.usersNotFollowing)
-        }).catch(err=>{
-            console.log(err)
-        })
+        
     },[])
     return(
-        <div>
+        <div className="mt-4">
             <h4>
-                Other Users To Follow 
+                More Profiles 
             </h4>
-            <UserInfoListComponent users = {users} isFollowing={true}/>
+            <UserInfoListComponent users = {props.users} isFollowing={false} setUsers={props.setUsers}/>
         </div>
     )
 }

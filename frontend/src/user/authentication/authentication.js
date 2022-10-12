@@ -38,7 +38,7 @@ async function registerUser(user){
 
 async function logOutUser(){
     try{
-        await axios.delete(logOutURL)
+        await axios.delete(logOutURL,{withCredentials:true})
         return {
             redirect : "/"
         }

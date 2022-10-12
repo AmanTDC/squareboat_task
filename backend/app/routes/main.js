@@ -20,23 +20,19 @@ app.get('/getMyInfo',checkAuthenticated,(req,res)=>{
 })
 
 app.delete('/logout',(req,res)=>{
-    // req.logOut(function(err){
-    //     req.ses
-    //     if(err) console.log(err)
-    //     console.log(req.user)
-    // });
-    // req.logout({keepSessionInfo:false},function(err){
-    //     if(err)
-    //         console.log(err)
-    //     res.redirect("/")
-    //     // res.json("logging out")
-    // })
+    
+    // console.log(Object.keys(req.cookies))
+    // res.clearCookie('token')
+    // res.status(200);
+    // res.send()
     req.session.destroy((err)=>{
-        res.redirect('/')
+        res.status(200);
+        res.json({
+            message:"Logout Successfull"
+        })
     })
     
-    // res.json("Succesfully Logged Out")
-})
+    })
 
 app.use('/user',usersRouter);
 app.use('/post',postRouter);

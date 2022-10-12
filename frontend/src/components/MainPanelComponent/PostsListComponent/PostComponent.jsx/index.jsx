@@ -9,7 +9,7 @@ export default function PostComponent(props){
     
     })
     return(
-        <div className="card">
+        <div className="card mb-3 pb-3">
             <UserTitleComponent name={props.name} username={props.username}/>
             <PostContentComponent post_text={props.post_text}/>
         </div>

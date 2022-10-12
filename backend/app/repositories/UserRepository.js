@@ -24,7 +24,7 @@ class UserRepository{
                 query = `SELECT * from users where users.username = '${user.username}' or users.email = '${user.username}'`
             else if(user.user_id)
                 query = `SELECT * from users where users.user_id = ${user.user_id}`
-            console.log(query)
+            // console.log(query)
             db.query(query,
                 (err,result,fields)=>{
                     
@@ -42,7 +42,7 @@ class UserRepository{
                 query = `SELECT user_id,username,name,email from users where users.username = '${user.username}' or users.email = '${user.username}'`
             else if(user.user_id)
                 query = `SELECT user_id,username,name,email from users where users.user_id = ${user.user_id}`
-            console.log(query)
+            // // console.log(query)
             db.query(query,
                 (err,result,fields)=>{
                     

@@ -38,13 +38,18 @@ async function checkAuthenticated(req,res,next){
 }
 console.log("In passpoort-confg")
 async function configSerializeAndDeserialize (){
+    // await (new UserRepository().getUser({user_id}))
     passport.use(new LocalStrategy( authenticateUser ))
-    passport.serializeUser((user,done)=>{console.log("serialize");done(null,user)})
-    passport.deserializeUser((user,done)=>{
-    // console.log("deserialize")
-    done(null, user)
-    // done(null, await (new UserRepository().getUser({user_id:id})))
-})
+    passport.serializeUser((user,done)=>{console.log(user);done(null,user.user.user_id)})
+    passport.deserializeUser((user_id,done)=>{
+        new UserRepository().getUser({user_id}).then(
+            user=>{
+                done(null,user);
+            }
+        ).catch(err=>{
+            done(err,null)
+        })
+    })
 }
 
 configSerializeAndDeserialize()

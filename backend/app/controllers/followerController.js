@@ -4,9 +4,7 @@ const followerRepository = new FollowerRepository();
 
 async function getFollowers(req,res){
     try{
-        let user = {
-            user_id : req.query.user_id
-        }
+        let user = req.user
         let followers = await followerRepository.getFollowers(user);
         res.json({
             followers
@@ -21,9 +19,7 @@ async function getFollowers(req,res){
 }
 async function getFollowing(req,res){
     try{
-        let user = {
-            user_id : req.query.user_id
-        }
+        let user = req.user
         let usersFollowing =  await followerRepository.getFollowing(user);
         res.json({
             usersFollowing
@@ -37,9 +33,7 @@ async function getFollowing(req,res){
 }
 async function getNotFollowing(req,res){
     try{
-        let user = {
-            user_id : req.query.user_id
-        }
+        let user = req.user
         let usersNotFollowing =  await followerRepository.getNotFollowing(user);
         res.json({
             usersNotFollowing
@@ -53,6 +47,22 @@ async function getNotFollowing(req,res){
     
 }
 
+async function addFollower(req,res){
+    try{
+        let user = req.user
+        let toFollowUser = req.body.toFollowUser
+        await followerRepository.addFollower(user,toFollowUser)
+        res.json({
+            message:"Succesfull Added Follower"
+        })
+
+    }catch(err){
+        res.status(400);
+        console.log(err)
+        res.json({error:true,errorMessage:"Unexpected Error Occurred"})
+    }
+}
+
 module.exports = {
-    getFollowers,getFollowing,getNotFollowing
+    getFollowers,getFollowing,getNotFollowing,addFollower
 }

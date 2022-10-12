@@ -1,31 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
+import { getFollowers } from '../../services/apiService';
 import { logOutUser } from '../../user/authentication/authentication';
 import FollowerOptions from './FollowerOptions';
 import UserInfoListComponent from './UserInfoList';
 import UsersToFollowComponent from './UsersToFollowComponent';
-export default function SidePanelComponent(props){
+function SidePanelComponent(props){
     let [users,setUsers] = useState([
-        {
-            "user_id": 43,
-            "username": "undefined",
-            "name": "asddf"
-        },
-        {
-            "user_id": 45,
-            "username": "UU",
-            "name": "NN"
-        },
-        {
-            "user_id": 48,
-            "username": "Aman Gupta",
-            "name": "AMAN GUPTA"
-        }
     ])
+    let [toFollowUsers,setToFollowUsers] = useState([])
     let [redirectToLogin,setRedirectToLogin] = useState(false)
     let [isFollowing,setIsFollowing] = useState(false)
+    useEffect(()=>{
+        
+    },[setUsers,setToFollowUsers])
     return(
-        <div className="card m-3 w-25">
+        <div className="card m-3 w-25 ">
             <div className="follow-relation-panel">
                 <button className="btn btn-danger" onClick={async ()=>{await logOutUser();setRedirectToLogin(true)}}>
                     Log Out
@@ -33,10 +24,15 @@ export default function SidePanelComponent(props){
                 {
                     redirectToLogin&&<Redirect to = "/login"/>
                 }
-                <FollowerOptions/>
-                <UserInfoListComponent users = {users} isFollowing={isFollowing}/>
+                <FollowerOptions isFollowing={isFollowing} setIsFollowing={setIsFollowing} setUsers={setUsers}/>
+                {/* <UserInfoListComponent users = {users} isFollowing={isFollowing} setUsers={setUsers}/> */}
+                {   !isFollowing?
+                    <UserInfoListComponent users = {props.followers} isFollowing={false} setUsers={setUsers}/>:
+                    <UserInfoListComponent users = {props.usersFollowing} isFollowing={true} setUsers={setUsers}/>
+                }
             </div>
-            <UsersToFollowComponent/>
+            <UsersToFollowComponent users={props.usersNotFollowing} setUsers={setToFollowUsers}/>
         </div>
     )
 }
+export default connect((state)=>({user:state.user,followers:state.followers,usersFollowing:state.usersFollowing,usersNotFollowing:state.usersNotFollowing}))(SidePanelComponent)

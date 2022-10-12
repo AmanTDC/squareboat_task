@@ -10,7 +10,9 @@ export default function UserInfoListComponent(props){
                             key = {user.user_id}
                             username = {user.username}
                             name = {user.name}
-                            isFollowing = {props.isFollowing}
+                            isFollowing = {user.isFollowing||props.isFollowing}
+                            user_id = {user.user_id}
+                            setUsers = {props.setUsers}
                         />
                 })
             }

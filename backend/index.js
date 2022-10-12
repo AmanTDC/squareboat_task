@@ -24,7 +24,7 @@ app.use(express.urlencoded({extended:false}))
 app.use(flash())
 
 let corsOptions = {
-    origin: "http://localhost:3000",
+    origin: UI_URL,
     credentials:true,
     optionsSuccessStatus: 200 
 }

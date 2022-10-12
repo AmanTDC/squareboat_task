@@ -1,4 +1,4 @@
-var mysql = require('mysql');
+var mysql = require('mysql2');
 //improve this to cred files
 let connection = mysql.createConnection({
     host:"localhost",

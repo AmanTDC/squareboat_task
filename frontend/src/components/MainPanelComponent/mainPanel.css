@@ -17,3 +17,6 @@
 .post-content{
 
 }
+.user-post-title{
+    flex-wrap: wrap;
+}

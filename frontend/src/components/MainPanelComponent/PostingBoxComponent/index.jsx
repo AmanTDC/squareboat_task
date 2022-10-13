@@ -26,12 +26,13 @@ function PostingBoxComponent(props){
     }
     return(
         <div className="p-3 m-3  card text-left posting-box">
-            <h4 className="m-1">
+            <h4 className="m-1 d-flex">
                 {props.user.name}
-                <small className="text-secondary m-2">
-                    @{props.user.username}
-                </small>
+                
             </h4>
+            <h5 className="d-block text-secondary ml-4">
+                @{props.user.username}
+            </h5>
             
             <form>
                 <textarea className="form-control m-1" placeholder = "Write Something..."onChange={handleOnChange} value={postText}/>

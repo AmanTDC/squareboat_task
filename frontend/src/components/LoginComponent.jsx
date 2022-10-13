@@ -35,38 +35,41 @@ function LoginComponent(props){
     }
 
     return(
-        <div className="card col-8">
-            <h3>
+        <div className="card col-8 auth-card">
+            <h3 className="auth-heading">
                 Login
             </h3>
             <form>
-                <div className="form-group">
+                <div className="form-group auth-form-group">
                 
-                    <label>
+                    <label className="auth-label">
                         Email Id
                     </label>
-                    <input type="email" onChange={handleOnChange} name ="username" className="form-control" placeholder="Enter email" value={username}>
+                    <input type="email" onChange={handleOnChange} name ="username" className="form-control auth-input" placeholder="Enter email" value={username}>
                     </input>
                 </div>
 
-                <div className="form-group">
+                <div className="form-group auth-form-group">
                     
-                    <label>
+                    <label className="auth-label">
                         Password
                     </label>
-                    <input type="password" onChange={handleOnChange} name="password" className="form-control" placeholder="Enter Password" value={password}>
+                    <input type="password" onChange={handleOnChange} name="password" className="form-control auth-input" placeholder="Enter Password" value={password}>
                     </input>
                 </div>
-                <button  className="btn btn-primary" onClick={(e)=>{e.preventDefault();handleOnSubmit(e)}} >
-                    Login
-                </button>
-                {
-                    
-                    loggedIn&&<Redirect to="/home"/>
-                }
-                <Link to = "/register">
-                    Register
-                </Link>
+                <div className="auth-nav">
+                    <button  className="btn btn-primary auth-submit" onClick={(e)=>{e.preventDefault();handleOnSubmit(e)}} >
+                        Login
+                    </button>
+                    {
+                        
+                        loggedIn&&<Redirect to="/home"/>
+                    }
+                    <Link className="auth-href" to = "/register">
+                        Register
+                    </Link>
+                </div>
+                
 
             </form>
         </div>

@@ -1,0 +1,19 @@
+.post-content-view{
+    letter-spacing: -.5px;
+    line-height: 18px;
+    color: rgba(0, 0, 0, 0.575);
+    white-space: pre-wrap;
+}
+.no-post-display{
+    padding-top: 50px;
+    padding-bottom: 10px;
+    font-weight: 600;
+    /* transition: ; */
+    /* transition-duration: 3s; */
+}
+.post{
+    border-bottom:1px dashed  rgba(0, 0, 0, 0.301);
+}
+.post-content{
+
+}

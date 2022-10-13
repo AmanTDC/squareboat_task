@@ -16,14 +16,9 @@ function SidePanelComponent(props){
         
     },[setUsers,setToFollowUsers])
     return(
-        <div className="card m-3 w-25 ">
-            <div className="follow-relation-panel">
-                <button className="btn btn-danger" onClick={async ()=>{await logOutUser();setRedirectToLogin(true)}}>
-                    Log Out
-                </button>
-                {
-                    redirectToLogin&&<Redirect to = "/login"/>
-                }
+        <div className={" side-panel  "+(props.usingMobile?"mobile":'')}>
+            <div className="m-3 follow-relation-panel  pt-3 pl-1 pr-1 card">
+                
                 <FollowerOptions isFollowing={isFollowing} setIsFollowing={setIsFollowing} setUsers={setUsers}/>
                 {/* <UserInfoListComponent users = {users} isFollowing={isFollowing} setUsers={setUsers}/> */}
                 {   !isFollowing?

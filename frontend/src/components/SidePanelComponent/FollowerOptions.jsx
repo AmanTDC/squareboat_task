@@ -20,10 +20,10 @@ function FollowerOptions({setUsers,setIsFollowing,user,isFollowing}){
     }
     return(
         <div className="d-flex p-2">
-            <button name="followers" className={"btn w-50  "+(isFollowing?"":"btn-primary")} onClick={handleOnClick}>
+            <button name="followers" className={"btn w-50 follower-option-button  "+(isFollowing?"":"btn-secondary")} onClick={handleOnClick}>
                 Followers
             </button>
-            <button name="following" className={"btn w-50 "+(isFollowing?"btn-primary":"")} onClick={handleOnClick}>
+            <button name="following" className={"btn w-50 follower-option-button "+(isFollowing?"btn-secondary":"")} onClick={handleOnClick}>
                 Following
             </button>
         </div>

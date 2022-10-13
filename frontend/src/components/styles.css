@@ -1,0 +1,139 @@
+.auth-card{
+    margin: auto;
+    margin-top: 10%;
+    padding:5%;
+    min-width: 300px;
+    max-width: 600px;
+}
+.container{
+    height: 100%;
+}
+.auth-form-group{
+    text-align: left;
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
+.auth-nav{
+    display: flex;
+    column-gap: 30px;
+}
+.auth-href{
+    margin-top: 8px;
+}
+.auth-heading{
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.091);
+    font-weight: bolder;
+    font-size: 2em;
+}
+.auth-label{
+    font-weight: bold;
+    letter-spacing: 0px;
+}
+.auth-submit{
+    font-weight: bold;
+}
+body{
+     font-family: 'Courier New', Courier, monospace;
+     
+     /* font-family:cursive; */
+}
+.home-container{
+    background-color: rgba(223, 217, 217, 0.276);
+    width: 68.7vw;
+    /* min-height:; */
+}
+.header-text{
+    font-weight: bolder;
+    font-size: 2em;
+    padding-top: 0.5em;
+}
+.header-container{
+    /* border: 1px solid black; */
+    /* margin-left: 1rem; */
+    display: flex;
+    justify-content: space-between;
+    width:68.5vw;
+    z-index: 10;
+    position: fixed;
+    box-shadow: 1px 1px rgba(59, 42, 42, 0.146);
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.057);
+    /* width: 50rem; */
+    background-color: rgb(235, 234, 232);
+}
+.home-panels{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.main-panel , .side-panel{
+    margin-top: 4rem;
+}
+.main-panel{
+    margin-right: 2rem;
+    width: 70%;
+    /* max-width: 70%; */
+    min-width: 50%px; 
+}
+.side-panel{
+    width: 25%;
+    min-width: 150px;
+    
+    /* min-width: 200px; */
+}
+.side-panel.mobile{
+    width: 100%;
+}
+.main-panel.mobile{
+    width: 100%;
+    /* margin-right: 40em; */
+}
+.follow-icon{
+    padding-top: 4px;
+    cursor:pointer;
+}
+.user-tile{
+    display: inline-flex;
+    column-gap: 10px;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 255, 0.178);
+    border-radius: 5px;
+    
+}
+.user-tile-name{
+    letter-spacing: -1px;
+    word-spacing: -3px;
+}
+.folower-option-button{
+    
+}
+.no-user-display{
+    display: block;
+    font-weight: 600;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    margin : 1em;
+    margin-top:0;
+    padding:1rem;
+}
+.user-info-list{
+    margin-top: 1rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(54, 40, 40, 0.096);
+}
+.user-info-list:first-of-type{
+    border: none;
+}
+.more-profiles-heading{
+    font-weight: 600;
+}
+.logout-button{
+    height: 80%;
+    margin-top:0em;
+    color: white;
+    font-weight: 600;
+    background-color: rgba(218, 8, 8, 0.694);
+    margin-right: 3em;
+    
+}

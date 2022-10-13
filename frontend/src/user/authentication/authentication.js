@@ -37,11 +37,16 @@ async function registerUser(user){
 }
 
 async function logOutUser(){
+    
     try{
+        
         await axios.delete(logOutURL,{withCredentials:true})
+        alert("Logged Out Successfully");
         return {
+            
             redirect : "/"
         }
+        
     }catch(err){
         return{
             error:true,

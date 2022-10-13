@@ -36,23 +36,23 @@ export default function RegistrationComponent(props){
         }
     }
     return(
-        <div className="card col-8">
+        <div className="card col-8 auth-card">
 
             <form>
-            <h3>
+            <h3 className="auth-heading">
                 Register
             </h3>
-                <div className="form-group">
+                <div className="form-group auth-form-group">
                     
-                    <label>
+                    <label className="auth-label">
                         Name
                     </label>
-                    <input type="text" name="name" onChange={handleOnChange} className="form-control" placeholder="Enter Full Name" value={name}>
+                    <input type="text" name="name" onChange={handleOnChange} className="form-control auth-input" placeholder="Enter Full Name" value={name}>
                     </input>
                 </div>
-                <div className="form-group">
+                <div className="form-group auth-form-group">
                 
-                    <label>
+                    <label className="auth-label">
                         Email Id
                     
                     
@@ -60,34 +60,36 @@ export default function RegistrationComponent(props){
                     <input type="email" name="email" onChange={handleOnChange} className="form-control" placeholder="Enter email" value={email}>
                     </input>
                 </div>
-                <div className="form-group">
+                <div className="form-group auth-form-group">
                 
-                    <label>
+                    <label className="auth-label">
                         Username
                     </label>
                     <input type="text" name="username" onChange={handleOnChange} className="form-control" placeholder="Enter Username" value={username}>
                     </input>
                 </div>
 
-                <div className="form-group">
-                    
-                    <label>
+                <div className="form-group auth-form-group">
+                
+                    <label className="auth-label">
                         Password
                     </label>
                     <input type="password" name="password" onChange={handleOnChange} className="form-control" placeholder="Enter Password" value={password}>
                     </input>
                 </div>
                 
+                <div className="auth-nav">
+                    <button  className="btn auth-submit btn-primary" onClick={(e)=>{e.preventDefault();handleOnSubmit(e)}} >
+                        Sign Up
+                    </button>
+                    {
+                        registered&&<Redirect to = "/login"/>
+                    }
+                    <Link className="auth-href" to="/login">
+                        Login
+                    </Link>
+                </div>
                 
-                <button  className="btn btn-primary" onClick={(e)=>{e.preventDefault();handleOnSubmit(e)}} >
-                    Sign Up
-                </button>
-                {
-                    registered&&<Redirect to = "/login"/>
-                }
-                <Link to="/login">
-                    Login
-                </Link>
 
             </form>
         </div>

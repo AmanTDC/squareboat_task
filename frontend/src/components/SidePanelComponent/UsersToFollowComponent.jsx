@@ -9,8 +9,8 @@ function UsersToFollowComponent(props){
         
     },[])
     return(
-        <div className="mt-4">
-            <h4>
+        <div className=" card pt-3 pl-1 pr-1 m-3">
+            <h4 className="more-profiles-heading">
                 More Profiles 
             </h4>
             <UserInfoListComponent users = {props.users} isFollowing={false} setUsers={props.setUsers}/>

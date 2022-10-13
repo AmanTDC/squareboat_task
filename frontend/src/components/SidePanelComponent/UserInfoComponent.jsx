@@ -24,16 +24,16 @@ function UserInfoComponent(props){
 
     },[setIsFollowing])
     return(
-        <div className="d-block card m-2 mt-1  p-3 text-left">
-            <h7 className="ml-3">{props.name}
-                <small className="ml-3">
-                    @{props.username}
-                </small>
+        <div className="d-flex m-2 mt-1  p-2 text-left user-tile">
+            <h7 className="d-block ml-3 user-tile-name">{props.name}
+                    {/* @{props.username} */}
+                
             </h7>
             {   
-                (!props.isFollowing&&!isFollowing)&&<button className="btn btn-primary" onClick={handleFollowClick}>
-                Follow
-            </button>
+                (!props.isFollowing&&!isFollowing)&&<i class="d-block fa-solid fa-plus follow-icon text-secondary pr-2" onClick={handleFollowClick}></i>
+            // <button className="btn btn-primary" >
+            //     Follow
+            // </button>
             }
             
         </div>

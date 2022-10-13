@@ -3,8 +3,11 @@ import UserInfoComponent from "./UserInfoComponent";
 
 export default function UserInfoListComponent(props){
     return(
-        <div>
-            {
+        <div className="user-info-list">
+            {   props.users.length==0?
+                <div className="no-user-display">
+                    No user fits this criteria
+                </div>:
                 props.users.map(user=>{
                     return <UserInfoComponent
                             key = {user.user_id}

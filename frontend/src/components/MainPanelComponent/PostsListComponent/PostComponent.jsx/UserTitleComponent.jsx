@@ -2,7 +2,7 @@ import React from "react";
 
 export default function UserTitleComponent(props){
     return(
-        <div className="d-flex ml-3 mt-3">
+        <div className="d-flex ml-3 pt-2">
             <h4>
                 {props.name}
             </h4>

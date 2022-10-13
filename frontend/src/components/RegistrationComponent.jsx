@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { registerUser } from '../user/authentication/authentication';
 import { Redirect } from 'react-router';
+import { validateInput } from '../services/inputValidation';
 export default function RegistrationComponent(props){
     let [username,setUserName] = useState('')
     let [email,setEmail] = useState('')
@@ -12,8 +13,9 @@ export default function RegistrationComponent(props){
     let propertyToSetter = {
         name : setName,
         email: setEmail,
-        password:setPassword,
-        username:setUserName
+        username:setUserName,
+        password:setPassword
+        
     }
 
     function handleOnChange(e){
@@ -21,6 +23,11 @@ export default function RegistrationComponent(props){
         propertyToSetter[e.target.name](text)
     }
     async function handleOnSubmit(e){
+        let isValidInput = validateInput({
+            name,email,username,password
+        })
+        if(!isValidInput)
+            return false;
         let response = await registerUser({
             username,
             email,

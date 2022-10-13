@@ -1,5 +1,7 @@
 const { User } = require('../models/User')
 const { UserRepository } = require('../repositories/UserRepository')
+const { validateInput } = require('./validation')
+const sjcl = require('sjcl')
 function checkAuthenticated(req,res,next){
     // console.log(req.user)
     // console.log(req.cookies)
@@ -11,12 +13,11 @@ function checkAuthenticated(req,res,next){
     res.json({
         errorCode:401,
         errorMessage:"User need to login",
-        //to Change
-        // redirect:"http://localhost:3000/login"
     })
 }
 
 async function registerUser(req,res){
+    
     try{
         //to change
         console.log(req.body)
@@ -24,8 +25,19 @@ async function registerUser(req,res){
         if(!userDet){
             throw new Error("Message : User Not Defined")
         }
-        let user = await new User(null,userDet.username,userDet.email,userDet.name,userDet.password)
-        // console.log(typeof new UserRepository().createUser)
+        let isValidInput = validateInput({
+            username:userDet.username,
+            email:userDet.email,
+            name:userDet.name,
+            password:userDet.password
+        })
+        if(!isValidInput){
+            res.status(400);
+            res.send("Invalid User Data")
+        }
+        let passwordBitArray = sjcl.hash.sha256.hash(userDet.password)
+        let passwordHashed = sjcl.codec.hex.fromBits(passwordBitArray)
+        let user = await new User(null,userDet.username,userDet.email,userDet.name,passwordHashed)
         await (new UserRepository().createUser(user))
         
         res.json({message:"Successfull Registration"})

@@ -1,6 +1,7 @@
 const LocalStrategy = require('passport-local').Strategy
 const {UserRepository} = require('../app/repositories/UserRepository')
 const passport = require('passport')
+const sjcl = require('sjcl')
 // const LocalStrategy = require('passport-local').Strategy
 
 async function authenticateUser(username, password, done){
@@ -10,7 +11,9 @@ async function authenticateUser(username, password, done){
         return done(null,false,{message:"No Such User"})
     }
     try{
-        if (password==user.password_hashed){
+        let passwordBitArray = sjcl.hash.sha256.hash(password)
+        let password_hashed = sjcl.codec.hex.fromBits(passwordBitArray)
+        if (password_hashed==user.password_hashed){
             console.log("Password Matched")
         }
         else{

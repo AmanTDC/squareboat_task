@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { loginUser } from '../user/authentication/authentication';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
+import { validateInput } from '../services/inputValidation';
 function LoginComponent(props){
     let [username,setUsername] = useState('')
     let [password,setPassword] = useState('')
@@ -18,7 +19,12 @@ function LoginComponent(props){
         propertyToSetter[e.target.name](text)
     }
     async function handleOnSubmit(e){
-        //user login code
+        let isInputValid = validateInput({
+            loginUsername:username,
+            password
+        }) 
+        if(!isInputValid)
+            return 
         let loginResponse = await loginUser(username,password)
         if(loginResponse.error){
             alert("Invalid Credentials")

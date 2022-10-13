@@ -75,9 +75,9 @@ class FollowerRepository{
         return new Promise((resolve,reject)=>{
             let query = 
             `
-            select distinct squareboat_task.users.user_id,username,name from squareboat_task.users LEFT OUTER JOIN 
-(select squareboat_task.followers.user_id as user_id from squareboat_task.followers where squareboat_task.followers.follower_id = ${user_id}) as followers_by_id
-ON squareboat_task.users.user_id = followers_by_id.user_id WHERE followers_by_id.user_id is NULL and squareboat_task.users.user_id!=${user_id}
+                select distinct squareboat_task.users.user_id,username,name from squareboat_task.users LEFT OUTER JOIN 
+                (select squareboat_task.followers.user_id as user_id from squareboat_task.followers where squareboat_task.followers.follower_id = ${user_id}) as followers_by_id
+                ON squareboat_task.users.user_id = followers_by_id.user_id WHERE followers_by_id.user_id is NULL and squareboat_task.users.user_id!=${user_id}
 
             `
             db.query(query,(err,result,fields)=>{

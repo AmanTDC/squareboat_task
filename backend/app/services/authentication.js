@@ -19,8 +19,6 @@ function checkAuthenticated(req,res,next){
 async function registerUser(req,res){
     
     try{
-        //to change
-        console.log(req.body)
         let userDet = req?.body?.user
         if(!userDet){
             throw new Error("Message : User Not Defined")
@@ -52,8 +50,8 @@ async function registerUser(req,res){
         }
         else
             res.json(err)
-        console.log(err)
-        console.log("Error Encountered while registering")
+        //console.log(err)
+        //console.log("Error Encountered while registering")
         // console.log(err)
         
     }

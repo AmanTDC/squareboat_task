@@ -17,12 +17,12 @@ function HomeComponent(props){
     useEffect(  ()=>{
         getMyInfo().then(
             userContainer=>{
-                console.log(userContainer.user)
+                //console.log(userContainer.user)
                 props.dispatch(setUser(userContainer.user))
                   
             }
         ).catch(err=>{
-            console.log(err)
+            //console.log(err)
             setRedirectToLogin(true)
         })
         reloadFreshStates(props.dispatch).then(res=>{setRenderHome(true)  }).catch(err=>console.log(err))
@@ -30,7 +30,6 @@ function HomeComponent(props){
             setUsingMobile(true)
         }
     },[])
-    //to enhance and change
     if(renderHome)
     return(
         <div className="home-container ">

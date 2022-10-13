@@ -69,7 +69,6 @@ class FollowerRepository{
             })
         })
     }
-    //to change the resusabilitly
     async getNotFollowing(user){
         let user_id = user.user_id;
         return new Promise((resolve,reject)=>{

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { registerUser } from '../user/authentication/authentication';
 import { Redirect } from 'react-router';
 import { validateInput } from '../services/inputValidation';
+import { fullNameCaseCorrected } from '../services/fullNameCaseCorrection';
 export default function RegistrationComponent(props){
     let [username,setUserName] = useState('')
     let [email,setEmail] = useState('')
@@ -31,7 +32,7 @@ export default function RegistrationComponent(props){
         let response = await registerUser({
             username,
             email,
-            name,
+            name:fullNameCaseCorrected(name),
             password
         })
         if(response.error){
@@ -52,7 +53,7 @@ export default function RegistrationComponent(props){
                 <div className="form-group auth-form-group">
                     
                     <label className="auth-label">
-                        Name
+                        Fullname
                     </label>
                     <input type="text" name="name" onChange={handleOnChange} className="form-control auth-input" placeholder="Enter Full Name" value={name}>
                     </input>

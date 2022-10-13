@@ -5,7 +5,7 @@ import UserTitleComponent from './UserTitleComponent';
 export default function PostComponent(props){
     useEffect(()=>{
         
-        console.log(props)
+        //console.log(props)
     
     })
     return(

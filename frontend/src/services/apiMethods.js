@@ -9,9 +9,7 @@ async function getRequest(endpoint,queryParams){
         )
         return getResponse.data
     }catch(err){
-        if(err.errorCode==401){
-            return {redirect:"http://localhost:3000/login"}
-        }
+        throw err
     }
     
 }
@@ -22,9 +20,7 @@ async function postRequest(endpoint,body){
         )
         return postResponse.data
     }catch(err){
-        if(err.errorCode==401){
-            return {redirect:"http://localhost:3000/login"}
-        }
+        throw err
     }
 }
 

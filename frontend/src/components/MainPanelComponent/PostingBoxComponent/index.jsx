@@ -15,7 +15,7 @@ function PostingBoxComponent(props){
         e.preventDefault()
         try{
             await createPost({post_text:postText})
-            alert("Posted Successfully")
+            // alert("Posted Successfully")
             reloadFreshStates(props.dispatch)
             setPostText('')
         }catch(err){

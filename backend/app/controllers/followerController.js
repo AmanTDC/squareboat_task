@@ -11,7 +11,7 @@ async function getFollowers(req,res){
         })
     }catch(err){
         res.status(400);
-        console.log(err)
+        ////console.log(err)
         res.json({error:true,errorMessage:"Unexpected Error Occurred"})
     }
     
@@ -26,7 +26,7 @@ async function getFollowing(req,res){
         })
     }catch(err){
         res.status(400);
-        console.log(err)
+        //console.log(err)
         res.json({error:true,errorMessage:"Unexpected Error Occurred"})
     }
 
@@ -40,7 +40,7 @@ async function getNotFollowing(req,res){
         })
     }catch(err){
         res.status(400);
-        console.log(err)
+        //console.log(err)
         res.json({error:true,errorMessage:"Unexpected Error Occurred"})
     }
     
@@ -58,7 +58,7 @@ async function addFollower(req,res){
 
     }catch(err){
         res.status(400);
-        console.log(err)
+        //console.log(err)
         res.json({error:true,errorMessage:"Unexpected Error Occurred"})
     }
 }

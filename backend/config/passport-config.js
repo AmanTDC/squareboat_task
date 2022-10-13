@@ -14,7 +14,7 @@ async function authenticateUser(username, password, done){
         let passwordBitArray = sjcl.hash.sha256.hash(password)
         let password_hashed = sjcl.codec.hex.fromBits(passwordBitArray)
         if (password_hashed==user.password_hashed){
-            console.log("Password Matched")
+            //console.log("Password Matched")
         }
         else{
             return done(null,false,{message:"Password Incorrect"})

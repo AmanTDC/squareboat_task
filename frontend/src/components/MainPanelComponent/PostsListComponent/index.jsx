@@ -11,7 +11,10 @@ function PostListComponent(props){
     },[])
     return(
         <div className="card  m-3">
-            {   props.posts.length==0?<h4 className="no-post-display">Nothing to show rightnow. Follow more users to view their status updates!</h4>:
+            <h3 className="post-list-heading ">
+                Feed
+            </h3>
+            {   props.posts.length==0?<h4 className="p-2 no-post-display">Nothing to show right now. Follow more users to view their status updates!</h4>:
                 props.posts.map(post=>{
                     return <PostComponent 
                                 key = {post.post_id}

@@ -13,7 +13,7 @@ class PostRepository{
             let query=`
                 INSERT INTO squareboat_task.posts (user_id,post_text) VALUES (${user_id},'${post_text}')
             `
-            console.log(query)
+            //console.log(query)
             db.query(query,(err,result)=>{
                 if(err)
                     reject(err)
@@ -48,17 +48,20 @@ class PostRepository{
                         UNION 
                         
                         
-                        
+                        (
                         SELECT 
                         squareboat_task.users.user_id as user_id,
 						username,
 						name,
 						post_id,
 						post_text
-                        from squareboat_task.users INNER JOIN squareboat_task.posts on squareboat_task.users.user_id = squareboat_task.posts.user_id where squareboat_task.users.user_id = ${user_id}
+                        from squareboat_task.users INNER JOIN squareboat_task.posts on squareboat_task.users.user_id = squareboat_task.posts.user_id where squareboat_task.users.user_id = ${user_id})
+                        order by post_id desc
                         
         
             `
+            
+
             db.query(query,(err,result,fields)=>{
                 if(err) reject(err);
                 else resolve(result)

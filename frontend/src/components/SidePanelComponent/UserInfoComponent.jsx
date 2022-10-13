@@ -5,20 +5,16 @@ import reloadFreshStates from "../../services/reloadFreshStates";
 function UserInfoComponent(props){
     // console.log(props)
     let [isFollowing,setIsFollowing] = useState(false)
-    console.log(props.isFollowing)
-    async function handleFollowClick(e){
-        try{
-            await addFollower({
-                user_id:props.user_id
-            })
-            setIsFollowing(true)
-            await reloadFreshStates(props.dispatch)
-            // might be needed to change
-            // props.setUsers([])
-        }
-        catch(err){
-            throw err
-        }
+    //console.log(props.isFollowing)
+    function handleFollowClick(e){
+        
+        addFollower({
+            user_id:props.user_id
+        })
+        setIsFollowing(true)
+        reloadFreshStates(props.dispatch)
+    
+        
     }
     useEffect(()=>{
 

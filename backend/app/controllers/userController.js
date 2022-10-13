@@ -15,7 +15,7 @@ async function getUserInfo(req,res){
         })
     }catch(err){
         res.status(400);
-        console.log(err)
+        //console.log(err)
         res.json({error:true,errorMessage:"Unexpected Error Occurred"})
     }
 }

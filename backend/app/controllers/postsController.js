@@ -5,7 +5,7 @@ const postRepository = new PostRepository();
 async function getFeed(req,res){
     try{
         let user = req.user
-        console.log("User:",user)
+        //console.log("User:",user)
         let posts =  await postRepository.getFeed(user)
         res.json({
             posts
@@ -13,7 +13,7 @@ async function getFeed(req,res){
 
     } catch(err){
         res.status(400);
-        console.log(err)
+        //console.log(err)
         res.json({error:true,errorMessage:"Unexpected Error Occurred"})
     }
 }
@@ -28,8 +28,17 @@ async function createPost(req,res){
             message:"Posted Successfully"
         })
     }catch(err){
+
+        if(err.errno==1406){
+            res.status(413)
+            res.json({
+                error:true,
+                errorMessage:"Post length should be under 200 characters"
+            })
+            return 
+        }
         res.status(400);
-        console.log(err)
+        //console.log(err.errno)
         res.json({error:true,errorMessage:"Unexpected Error Occurred"})
     }
 }

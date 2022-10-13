@@ -1,3 +1,5 @@
+import handleErrorGeneral from "../errorHandlers/handleErrorGeneral";
+
 const { getRequest, postRequest } = require("./apiMethods");
 
 async function getMyInfo(){
@@ -5,7 +7,7 @@ async function getMyInfo(){
         return await getRequest('/getMyInfo','')
     }
     catch(err){
-        throw err
+        handleErrorGeneral(err)
     }
 }
 
@@ -14,38 +16,39 @@ async function getFollowers(){
     try{
         return await getRequest('/follower/getFollowers','')
     }catch(err){
-        throw err
+        handleErrorGeneral(err)
     }
 }
 async function getFollowing(){
     try{
         return await getRequest('/follower/getFollowing','')
     }catch(err){
-        throw err
+        handleErrorGeneral(err)
     }
 }
 async function getNotFollowing(){
     try{
         return await getRequest('/follower/getNotFollowing','')
     }catch(err){
-        throw err
+        handleErrorGeneral(err)
     }
 }
 async function getFeed(){
     try{
         return await getRequest('/post/getFeed','')
     }catch(err){
-        throw err
+        handleErrorGeneral(err)
     }
 }
 async function createPost(post){
     try{
-        console.log(post)
+        //console.log(post)
         return await postRequest('/post/createPost',{
             post
         })
     }catch(err){
-        throw err
+        // console.log(err)
+        handleErrorGeneral(err)
     }
 }
 async function addFollower(toFollowUser){
@@ -54,7 +57,7 @@ async function addFollower(toFollowUser){
             toFollowUser
         })
     }catch(err){
-        throw err
+        handleErrorGeneral(err)
     }
 }
 export {

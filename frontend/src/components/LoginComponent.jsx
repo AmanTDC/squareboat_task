@@ -31,7 +31,7 @@ function LoginComponent(props){
         }
         else{
             alert("Successfully Logged In!")
-            console.log(loginResponse)
+            //console.log(loginResponse)
             // props.dispatch({
             //     type:"SET_USER",
             //     user_id:user.user_id
@@ -49,7 +49,7 @@ function LoginComponent(props){
                 <div className="form-group auth-form-group">
                 
                     <label className="auth-label">
-                        Email Id
+                        Email Id or Username
                     </label>
                     <input type="email" onChange={handleOnChange} name ="username" className="form-control auth-input" placeholder="Enter email" value={username}>
                     </input>

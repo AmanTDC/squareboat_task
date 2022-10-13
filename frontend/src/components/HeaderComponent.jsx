@@ -11,7 +11,7 @@ export default function HeaderComponent(props){
             setIsMobile(true)
     },[])
     return (
-        <div className={"header-container pt-3 pb-2 text-left "+(isMobile?'mobile':'')}>
+        <div className={"header-container pt-3 pb-2 text-left "+(isMobile?'mobile ':' ')+("innerWidth-"+window.innerWidth)}>
             <h3 className="header-text d-block pl-5 mb-1 pt-0">Chirp!</h3>
             <button className="btn logout-button" onClick={async ()=>{await logOutUser();setRedirectToLogin(true)}}>
                     Log Out

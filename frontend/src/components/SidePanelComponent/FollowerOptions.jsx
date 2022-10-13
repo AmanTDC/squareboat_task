@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getFollowers, getFollowing } from "../../services/apiService";
+import reloadFreshStates from "../../services/reloadFreshStates";
 
-function FollowerOptions({setUsers,setIsFollowing,user,isFollowing}){
+function FollowerOptions({dispatch,setUsers,setIsFollowing,user,isFollowing,countFollowers,countUsersFollowing}){
     async function handleOnClick(e){
         let type = e.target.name
         if(type=="following"){
@@ -16,17 +17,17 @@ function FollowerOptions({setUsers,setIsFollowing,user,isFollowing}){
             setUsers(followers)
             // console.log(followers)
         }
-        
+        // await reloadFreshStates(dispatch)
     }
     return(
         <div className="d-flex p-2">
             <button name="followers" className={"btn w-50 follower-option-button  "+(isFollowing?"":"btn-secondary")} onClick={handleOnClick}>
-                Followers
+                Followers({countFollowers})
             </button>
             <button name="following" className={"btn w-50 follower-option-button "+(isFollowing?"btn-secondary":"")} onClick={handleOnClick}>
-                Following
+                Following({countUsersFollowing})
             </button>
         </div>
     )
 }
-export default connect((state)=>({user:state.user}))(FollowerOptions)
+export default connect((state)=>({user:state.user,countFollowers:state.followers.length,countUsersFollowing:state.usersFollowing.length}))(FollowerOptions)

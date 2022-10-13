@@ -25,7 +25,7 @@ function PostingBoxComponent(props){
         
     }
     return(
-        <div className="p-3 mt-3 w-100 card text-left posting-box">
+        <div className="p-3 m-3  card text-left posting-box">
             <h4 className="m-1">
                 {props.user.name}
                 <small className="text-secondary m-2">

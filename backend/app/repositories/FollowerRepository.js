@@ -31,25 +31,16 @@ class FollowerRepository{
         return new Promise((resolve,reject)=>{
             let query = 
                 `
-                SELECT DISTINCT
-                follower_by_id.user_id as user_id,
-                follower_by_id.username as username,
-                follower_by_id.name as name,
-                (squareboat_task.followers.user_id is not NULL) as isFollowing
-                FROM
-                squareboat_task.followers
-                RIGHT OUTER JOIN
+                select distinct f1.user_id, (f2.user_id is not NULL) as isFollowing, users.username as username,users.name as name  from 
+                (select follower_id as user_id from followers where user_id=${user_id}) as 
+                f1
+                LEFT OUTER JOIN
+                (select * from followers where followers.follower_id = ${user_id}) as f2
+                on f1.user_id = f2.user_id
+                JOIN
+                users ON 
+                f1.user_id = users.user_id
 
-                (SELECT DISTINCT squareboat_task.users.user_id as 
-                                user_id,squareboat_task.users.username as 
-                                username,squareboat_task.users.name as 
-                                name FROM squareboat_task.users 
-                                INNER JOIN 
-                                squareboat_task.followers ON 
-                                squareboat_task.users.user_id = squareboat_task.followers.follower_id 
-                                where squareboat_task.followers.user_id = ${user_id}) as follower_by_id
-                ON
-                squareboat_task.followers.user_id = follower_by_id.user_id
                 `
             db.query(query,(err,result,fields)=>{
                 if(err) reject(err);

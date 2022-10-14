@@ -16,28 +16,28 @@ async function getFollowers(){
     try{
         return await getRequest('/follower/getFollowers','')
     }catch(err){
-        handleErrorGeneral(err)
+        // handleErrorGeneral(err)
     }
 }
 async function getFollowing(){
     try{
         return await getRequest('/follower/getFollowing','')
     }catch(err){
-        handleErrorGeneral(err)
+        // handleErrorGeneral(err)
     }
 }
 async function getNotFollowing(){
     try{
         return await getRequest('/follower/getNotFollowing','')
     }catch(err){
-        handleErrorGeneral(err)
+        // handleErrorGeneral(err)
     }
 }
 async function getFeed(){
     try{
         return await getRequest('/post/getFeed','')
     }catch(err){
-        handleErrorGeneral(err)
+        // handleErrorGeneral(err)
     }
 }
 async function createPost(post){

@@ -6,12 +6,12 @@ function UserInfoComponent(props){
     // console.log(props)
     let [isFollowing,setIsFollowing] = useState(false)
     //console.log(props.isFollowing)
-    function handleFollowClick(e){
-        
-        addFollower({
+    async function handleFollowClick(e){
+        setIsFollowing(true)
+        await addFollower({
             user_id:props.user_id
         })
-        setIsFollowing(true)
+        
         reloadFreshStates(props.dispatch)
     
         
